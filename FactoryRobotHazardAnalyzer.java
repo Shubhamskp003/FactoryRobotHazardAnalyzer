@@ -96,7 +96,6 @@ public class FactoryRobotHazardAnalyzer {
             return 3.0;
         }
     }
-
     // Calculates hazard risk
     public static double calculateHazardRisk(
             double armPrecision,
