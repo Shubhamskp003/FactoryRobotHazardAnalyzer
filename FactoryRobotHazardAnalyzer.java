@@ -3,11 +3,11 @@ import java.util.Scanner;
 /**
  * Factory Robot Hazard Analyzer
  *
- * UC1 - Printing input values
- * UC3 - Calculating the hazard risk
+ * UC1 - Printing user input
+ * UC3 - Calculating hazard risk
  *
- * This program takes input from the user related to robot arm precision,
- * worker density, and machinery condition, then calculates a hazard risk score.
+ * This program collects robot arm precision, worker density,
+ * and machinery condition, then calculates a hazard risk score.
  *
  * @Developer Shubham
  * @version 3.0
@@ -19,43 +19,43 @@ public class FactoryRobotHazardAnalyzer {
 
         Scanner sc = new Scanner(System.in);
 
-        // Taking Arm Precision value
+        // Input: Arm Precision
         System.out.print("Enter Arm Precision (0.0 - 1.0): ");
         double armPrecision = sc.nextDouble();
 
-        // Taking Worker Density value
+        // Input: Worker Density
         System.out.print("Enter Worker Density (1 - 20): ");
         int workerDensity = sc.nextInt();
 
-        sc.nextLine(); // clear buffer
+        sc.nextLine(); // Clear buffer
 
-        // Taking Machinery State
+        // Input: Machinery State
         System.out.print("Enter Machinery State (Worn/Faulty/Critical): ");
         String machineState = sc.nextLine();
 
-        // Echo inputs
+        // Echo Inputs
         System.out.println("\n--- Input Summary ---");
         System.out.println("Arm Precision   : " + armPrecision);
         System.out.println("Worker Density  : " + workerDensity);
         System.out.println("Machinery State : " + machineState);
 
-        // Get risk factor
+        // Machine risk factor
         double machineRiskFactor = getMachineRiskFactor(machineState);
 
-        // Calculate hazard risk
+        // Hazard risk calculation
         double hazardRisk = calculateHazardRisk(
                 armPrecision,
                 workerDensity,
                 machineRiskFactor
         );
 
-        // Display result
+        // Output result
         System.out.println("\nHazard Risk Score: " + hazardRisk);
 
         sc.close();
     }
 
-    // Returns machine risk factor based on state
+    // Returns risk factor based on machinery state
     public static double getMachineRiskFactor(String machineState) {
 
         if (machineState.equalsIgnoreCase("Worn")) {
@@ -65,12 +65,12 @@ public class FactoryRobotHazardAnalyzer {
         } else if (machineState.equalsIgnoreCase("Critical")) {
             return 3.0;
         } else {
-            System.out.println("Invalid state entered. Defaulting to Worn.");
+            System.out.println("Invalid input. Defaulting to Worn.");
             return 1.3;
         }
     }
 
-    // Calculates hazard risk
+    // Computes hazard risk score
     public static double calculateHazardRisk(
             double armPrecision,
             int workerDensity,
